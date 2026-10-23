@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+html,
+body,
+#app {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #03060c;
+  color: #d7fbff;
+  font-family: "Share Tech Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+#app {
+  position: relative;
+}
+
+canvas {
+  display: block;
+  outline: none;
+}
+
+.font-display {
+  font-family: Orbitron, "Share Tech Mono", sans-serif;
+}
+
+.clip-hud {
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+}
+
+.clip-bar {
+  clip-path: polygon(6px 0, 100% 0, 100% 100%, 0 100%, 0 6px);
+}
+
+@keyframes pulse-warn {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.pulse-warn {
+  animation: pulse-warn 0.8s ease-in-out infinite;
+}
