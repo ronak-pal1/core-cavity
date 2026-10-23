@@ -131,7 +131,7 @@ export class Game {
     if (this.mode === 'menu') {
       this.menuYaw += dt * 0.12;
       this.player.yaw = this.menuYaw;
-      this.player.pitch = 0.5;
+      this.player.pitch = -0.45;
       this.player.syncCamera(this.view.camera, this.terrain.grid, 0);
     } else if (this.mode === 'play') {
       this.look(dt);
@@ -162,6 +162,12 @@ export class Game {
       this.releaseTrigger();
     }
 
+    if (this.mode === 'play' && this.input.consumePress('Escape')) {
+      this.lockSuppressed = true;
+      if (document.pointerLockElement) document.exitPointerLock();
+      this.releaseTrigger();
+      this.mode = 'pause';
+    }
     if (this.input.consumePress('KeyM')) this.audio.toggleMute();
     this.weapons.update(dt);
     this.engine.thrust.value = this.player.thrust;
@@ -380,21 +386,21 @@ export class Game {
         x: position.x + forward.x * 1.35,
         y: position.y + forward.y * 1.35 + 0.15,
         z: position.z + forward.z * 1.35,
-        radius: 18,
+        radius: 11,
         r: 0.72,
-        g: 0.9,
+        g: 0.88,
         b: 1,
-        intensity: 8.2,
+        intensity: 2.4,
       },
       {
         x: position.x,
         y: position.y,
         z: position.z,
-        radius: 7.2,
-        r: 0.5,
-        g: 0.7,
+        radius: 5.5,
+        r: 0.45,
+        g: 0.62,
         b: 1,
-        intensity: 1.7,
+        intensity: 0.7,
       },
     ];
     if (this.laserActive) {
@@ -402,11 +408,11 @@ export class Game {
         x: this.laserPoint.x,
         y: this.laserPoint.y,
         z: this.laserPoint.z,
-        radius: 7.5,
+        radius: 6.2,
         r: 0.35,
         g: 0.95,
         b: 1,
-        intensity: 9,
+        intensity: 3.2,
       });
     }
     for (const explosion of this.weapons.explosionLights()) {

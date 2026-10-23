@@ -58,7 +58,7 @@ export class Player {
     this.health = 100;
     this.fuel = 100;
     this.tier = tier;
-    this.pitch = 0.42;
+    this.pitch = -0.55;
     this.roll = 0;
     this.thrust = 0.15;
     this.moving = false;

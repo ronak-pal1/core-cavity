@@ -95,8 +95,8 @@ export function createCaveMaterial(field: LightField): CaveMaterial {
         ),
       ),
     );
-    const ambient = mix(vec3(0.012, 0.016, 0.024), vec3(0.045, 0.012, 0.01), danger);
-    const lit = painted.mul(ambient.add(diffuse)).add(emissive).add(vec3(0.05, 0.16, 0.2).mul(fresnel));
+    const ambient = mix(vec3(0.045, 0.05, 0.06), vec3(0.09, 0.035, 0.02), danger);
+    const lit = painted.mul(ambient.add(min(diffuse, vec3(2.4)))).add(emissive).add(vec3(0.05, 0.16, 0.2).mul(fresnel));
     const dist = cameraPosition.distance(positionWorld);
     const fogNoise = mx_noise_float(positionWorld.mul(0.11).add(vec3(0, time.mul(0.18), 0)));
     const density = float(0.03).add(danger.mul(0.012)).mul(float(1).add(fogNoise.mul(0.45)));

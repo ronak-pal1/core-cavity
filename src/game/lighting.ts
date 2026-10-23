@@ -64,15 +64,15 @@ export function emitterLight(emitter: Emitter): LightSample {
   const z = emitter.z + 0.5;
   switch (emitter.type) {
     case Voxel.Ore:
-      return { x, y, z, radius: 4.4, r: 0.25, g: 0.9, b: 1, intensity: 3.4 };
+      return { x, y, z, radius: 4.2, r: 0.25, g: 0.9, b: 1, intensity: 1.6 };
     case Voxel.Energy:
-      return { x, y, z, radius: 3.8, r: 0.5, g: 1, b: 0.35, intensity: 3 };
+      return { x, y, z, radius: 3.6, r: 0.5, g: 1, b: 0.35, intensity: 1.45 };
     case Voxel.Hazard:
-      return { x, y, z, radius: 3.6, r: 1, g: 0.16, b: 0.55, intensity: 2.8 };
+      return { x, y, z, radius: 3.4, r: 1, g: 0.16, b: 0.55, intensity: 1.35 };
     case Voxel.Lava:
-      return { x, y, z, radius: 4.8, r: 1, g: 0.38, b: 0.06, intensity: 3.6 };
+      return { x, y, z, radius: 4.4, r: 1, g: 0.38, b: 0.06, intensity: 1.7 };
     case Voxel.Core:
-      return { x, y, z, radius: 9.5, r: 1, g: 0.82, b: 0.32, intensity: 7.2 };
+      return { x, y, z, radius: 8.5, r: 1, g: 0.82, b: 0.32, intensity: 2.8 };
     default:
       return { x, y, z, radius: 0.001, r: 0, g: 0, b: 0, intensity: 0 };
   }

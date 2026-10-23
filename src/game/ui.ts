@@ -229,7 +229,7 @@ const TEMPLATE = `
       <div class="text-right text-[10px] leading-5 text-cyan-100/80">
         <div>WASD FLY · MOUSE AIM</div>
         <div>LMB/F LASER · SPACE CHARGE</div>
-        <div>Q/E VERTICAL · SHIFT BOOST</div>
+        <div>Q/E VERTICAL · SHIFT BOOST · ESC PAUSE</div>
       </div>
     </footer>
     <div class="absolute bottom-24 left-4 text-[11px] text-cyan-100/80">

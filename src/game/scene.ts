@@ -23,7 +23,7 @@ export class GameScene {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.12;
+    this.renderer.toneMappingExposure = 1.05;
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.camera = new THREE.PerspectiveCamera(72, 1, 0.06, 160);
     this.scene.background = new THREE.Color(0x03060c);
@@ -34,7 +34,7 @@ export class GameScene {
     await this.renderer.init();
     const scenePass = pass(this.scene, this.camera);
     const sceneColor = scenePass.getTextureNode('output');
-    const bloomPass = bloom(sceneColor, 0.36, 0.46, 0.78);
+    const bloomPass = bloom(sceneColor, 0.42, 0.38, 0.84);
     this.pipeline = new THREE.RenderPipeline(this.renderer);
     this.pipeline.outputNode = sceneColor.add(bloomPass);
     this.backendName = 'isWebGPUBackend' in this.renderer.backend ? 'WebGPU' : 'WebGL2';
@@ -50,6 +50,7 @@ export class GameScene {
   }
 
   render(): void {
-    this.pipeline?.render();
+    if (this.pipeline) this.pipeline.render();
+    else this.renderer.render(this.scene, this.camera);
   }
 }
